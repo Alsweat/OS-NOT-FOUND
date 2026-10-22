@@ -1,0 +1,11 @@
+PRETTY_NAME="404 NOT FOUND OS (ghost edition)"
+NAME="404 NOT FOUND OS"
+VERSION_ID="1.0"
+VERSION="1.0 (ghost)"
+VERSION_CODENAME=ghost
+ID=notfoundos
+ID_LIKE=debian
+HOME_URL="https://example.invalid/404-not-found-os"
+SUPPORT_URL="https://example.invalid/404-not-found-os"
+BUG_REPORT_URL="https://example.invalid/404-not-found-os"
+ANSI_COLOR="1;31"

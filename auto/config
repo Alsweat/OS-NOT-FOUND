@@ -1,0 +1,18 @@
+#!/bin/sh
+# live-build configuration for 404 NOT FOUND OS
+# (read automatically by `lb config`)
+set -e
+
+lb config noauto \
+    --mode debian \
+    --distribution bookworm \
+    --architectures amd64 \
+    --archive-areas "main contrib non-free non-free-firmware" \
+    --debian-installer live \
+    --iso-application "404 NOT FOUND OS" \
+    --iso-publisher "404 NOT FOUND OS Project" \
+    --iso-volume "404-NOT-FOUND-OS" \
+    --memtest none \
+    --apt-recommends false \
+    --bootappend-live "boot=live components username=ghost hostname=notfound locales=en_US.UTF-8 keyboard-layouts=us" \
+    "${@}"

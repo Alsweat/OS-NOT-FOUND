@@ -1,0 +1,29 @@
+#!/bin/sh
+# Runs inside the chroot during build. Applies branding + defaults.
+set -e
+
+# default shell -> zsh for the live user skeleton
+if [ -x /usr/bin/zsh ]; then
+    sed -i 's#:/bin/bash#:/usr/bin/zsh#' /etc/default/useradd 2>/dev/null || true
+fi
+
+# lightdm greeter banner
+mkdir -p /etc/lightdm
+cat > /etc/lightdm/lightdm-gtk-greeter.conf <<'EOF'
+[greeter]
+background=#04070a
+theme-name=Adwaita-dark
+icon-theme-name=Papirus-Dark
+indicators=~host;~spacer;~clock;~spacer;~session;~power
+clock-format=%H:%M  %a %d %b
+EOF
+
+# make GTK apps default to dark
+mkdir -p /etc/skel/.config/gtk-3.0
+cat > /etc/skel/.config/gtk-3.0/settings.ini <<'EOF'
+[Settings]
+gtk-application-prefer-dark-theme=1
+gtk-icon-theme-name=Papirus-Dark
+EOF
+
+echo "404 NOT FOUND OS branding applied."
